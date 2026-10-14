@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run check:package
+
+  peers:
+    # The peer ranges are a promise; this is what keeps it. driver.js 1.8.0 is
+    # the first release with the `driver.js/hints` entry point.
+    name: React ${{ matrix.react }} / driver.js ${{ matrix.driver }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        react: [18, 19]
+        driver: ['1.8.0', latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: >
+          npm install --no-save
+          react@${{ matrix.react }}
+          react-dom@${{ matrix.react }}
+          @types/react@${{ matrix.react }}
+          @types/react-dom@${{ matrix.react }}
+          driver.js@${{ matrix.driver }}
+      - run: npx tsc --noEmit -p tsconfig.lib.json
+      - run: npm test
+
+  e2e:
+    name: Playwright
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-traces
+          path: test-results
+          retention-days: 7

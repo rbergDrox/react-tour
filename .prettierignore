@@ -1,0 +1,9 @@
+dist
+storybook-static
+node_modules
+package-lock.json
+CHANGELOG.md
+.changeset
+test-results
+playwright-report
+.idea

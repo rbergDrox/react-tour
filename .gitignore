@@ -1,1 +1,9 @@
 /.idea
+node_modules
+dist
+storybook-static
+coverage
+test-results
+playwright-report
+*.tgz
+.DS_Store

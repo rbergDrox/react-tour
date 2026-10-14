@@ -1,0 +1,134 @@
+/* Popovers are appended to <body> and inherit its font. */
+body {
+    font-family:
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        sans-serif;
+}
+
+.demo {
+    color: #18181b;
+    background: #fafafa;
+    min-height: 100vh;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.demo h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.25rem;
+}
+
+.demo p {
+    margin: 0 0 1rem;
+    max-width: 38rem;
+    color: #52525b;
+    line-height: 1.5;
+}
+
+.demo-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.demo button {
+    font: inherit;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid #d4d4d8;
+    border-radius: 0.5rem;
+    background: #fff;
+    color: inherit;
+    cursor: pointer;
+}
+
+.demo button.primary {
+    border-color: transparent;
+    background: #18181b;
+    color: #fff;
+}
+
+.demo button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.demo-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e4e4e7;
+}
+
+.demo-tabs button {
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: none;
+}
+
+.demo-tabs button[aria-current='page'] {
+    border-bottom-color: #18181b;
+    font-weight: 600;
+}
+
+.demo-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    max-width: 30rem;
+    border: 1px solid #e4e4e7;
+    border-radius: 0.625rem;
+    background: #fff;
+}
+
+.demo-card h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+}
+
+.demo-card p {
+    margin: 0;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0.75rem;
+    max-width: 44rem;
+}
+
+.demo-log {
+    margin: 1.5rem 0 0;
+    padding: 0.75rem 1rem;
+    max-width: 30rem;
+    max-height: 11rem;
+    overflow: auto;
+    border-radius: 0.5rem;
+    background: #18181b;
+    color: #d4d4d8;
+    font:
+        0.75rem/1.6 ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        monospace;
+    white-space: pre-wrap;
+}
+
+.demo-log:empty::before {
+    content: 'Adapter calls appear here.';
+    color: #71717a;
+}
+
+.demo-code {
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    background: #f4f4f5;
+    font:
+        0.8125rem ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        monospace;
+}

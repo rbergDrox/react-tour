@@ -1,0 +1,100 @@
+/**
+ * Optional base theme for @shapperize/react-tour.
+ *
+ * Import it after driver.js's own stylesheets:
+ *
+ *   import 'driver.js/dist/driver.css';
+ *   import 'driver.js/dist/hints.css';
+ *   import '@shapperize/react-tour/styles.css';
+ *
+ * Every value is a custom property with a fallback, so a host themes the
+ * popover by setting variables on :root (or any ancestor of <body>) rather
+ * than by overriding selectors.
+ */
+.driver-popover.react-tour {
+    background-color: var(--tour-popover-bg, #ffffff);
+    color: var(--tour-popover-fg, #18181b);
+    border: 1px solid var(--tour-border, #e4e4e7);
+    border-radius: var(--tour-radius, 0.625rem);
+    box-shadow: var(--tour-shadow, 0 16px 60px rgb(0 0 0 / 0.18));
+    font-family: var(--tour-font, inherit);
+    max-width: var(--tour-max-width, 22rem);
+}
+
+.driver-popover.react-tour .driver-popover-title {
+    font-family: var(--tour-title-font, var(--tour-font, inherit));
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--tour-popover-fg, #18181b);
+}
+
+.driver-popover.react-tour .driver-popover-description {
+    color: var(--tour-muted-fg, #71717a);
+    font-family: var(--tour-font, inherit);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.driver-popover.react-tour .driver-popover-progress-text {
+    color: var(--tour-muted-fg, #71717a);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.driver-popover.react-tour .driver-popover-footer button {
+    /* Derived from the popover by default, so a dark popover needs no
+       separate button colours. */
+    background-color: var(--tour-button-bg, transparent);
+    color: var(--tour-button-fg, var(--tour-popover-fg, #18181b));
+    border: 1px solid var(--tour-border, #e4e4e7);
+    border-radius: calc(var(--tour-radius, 0.625rem) - 2px);
+    font-family: var(--tour-font, inherit);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-shadow: none;
+    padding: 0.3rem 0.7rem;
+}
+
+.driver-popover.react-tour .driver-popover-footer button:last-child {
+    background-color: var(--tour-primary-bg, #18181b);
+    color: var(--tour-primary-fg, #fafafa);
+    border-color: transparent;
+}
+
+.driver-popover.react-tour .driver-popover-footer button:disabled {
+    opacity: 0.5;
+}
+
+.driver-popover.react-tour .driver-popover-close-btn {
+    color: var(--tour-muted-fg, #71717a);
+}
+
+.driver-popover.react-tour .driver-popover-arrow-side-top {
+    border-top-color: var(--tour-popover-bg, #ffffff);
+}
+
+.driver-popover.react-tour .driver-popover-arrow-side-bottom {
+    border-bottom-color: var(--tour-popover-bg, #ffffff);
+}
+
+.driver-popover.react-tour .driver-popover-arrow-side-left {
+    border-left-color: var(--tour-popover-bg, #ffffff);
+}
+
+.driver-popover.react-tour .driver-popover-arrow-side-right {
+    border-right-color: var(--tour-popover-bg, #ffffff);
+}
+
+.driver-hint {
+    --driver-hint-color: var(
+        --tour-hint-color,
+        var(--tour-primary-bg, #18181b)
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .driver-hint,
+    .driver-hint * {
+        animation: none !important;
+    }
+}

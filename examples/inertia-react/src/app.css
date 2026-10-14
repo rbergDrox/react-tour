@@ -1,0 +1,76 @@
+:root {
+    font-family:
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        sans-serif;
+    color: #18181b;
+    background: #fafafa;
+
+    --tour-primary-bg: #0f766e;
+}
+
+body {
+    margin: 0;
+}
+
+.nav {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e4e4e7;
+    background: #fff;
+}
+
+.nav a {
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.content {
+    padding: 1.5rem;
+    max-width: 40rem;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+button {
+    font: inherit;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid #d4d4d8;
+    border-radius: 0.5rem;
+    background: #fff;
+    cursor: pointer;
+}
+
+button.primary {
+    border-color: transparent;
+    background: #0f766e;
+    color: #fff;
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #e4e4e7;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.list li {
+    padding: 0.75rem 1rem;
+}
+
+.list li + li {
+    border-top: 1px solid #e4e4e7;
+}
