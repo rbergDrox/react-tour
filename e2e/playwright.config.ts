@@ -3,8 +3,9 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * Smoke tests against the example apps with real driver.js.
  *
- * The examples resolve `@shapperize/react-tour` to the built package, so run
- * `npm run build` first.
+ * The examples resolve `@shapperize/react-tour` to the built package and have
+ * their own installs, so run `npm run build` and `npm run examples:install`
+ * first.
  */
 export default defineConfig({
     testDir: '.',
@@ -40,14 +41,14 @@ export default defineConfig({
     webServer: [
         {
             command:
-                'npm run build -w react-tour-example-react-router && npm run preview -w react-tour-example-react-router',
+                'npm run build --prefix examples/react-router && npm run preview --prefix examples/react-router',
             cwd: '..',
             url: 'http://localhost:4173',
             reuseExistingServer: !process.env.CI,
             timeout: 60_000,
         },
         {
-            command: 'npm run dev -w react-tour-example-inertia-react',
+            command: 'npm run dev --prefix examples/inertia-react',
             cwd: '..',
             url: 'http://localhost:4174',
             reuseExistingServer: !process.env.CI,

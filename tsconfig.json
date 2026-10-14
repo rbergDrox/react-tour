@@ -16,14 +16,6 @@
         "noEmit": true,
         "types": ["node"]
     },
-    "include": [
-        "src",
-        "test",
-        "stories",
-        ".storybook",
-        "examples",
-        "e2e",
-        "*.ts"
-    ],
+    "include": ["src", "test", "stories", ".storybook", "e2e", "*.ts"],
     "exclude": ["node_modules", "dist", "**/dist", "storybook-static"]
 }

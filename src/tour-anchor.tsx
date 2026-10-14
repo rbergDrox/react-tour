@@ -9,8 +9,19 @@ export type TourAnchorProps = {
     children: ReactNode;
 } & Omit<HTMLAttributes<HTMLElement>, 'children' | 'id'>;
 
-const isDevelopment =
-    typeof process !== 'undefined' && process.env.NODE_ENV !== 'production';
+/**
+ * Bundlers replace `process.env.NODE_ENV` with a string literal, so this must
+ * read it directly: a `typeof process` guard survives the replacement and is
+ * false in every browser. With no bundler and no `process`, the reference
+ * throws, and that is treated as production.
+ */
+function isDevelopment(): boolean {
+    try {
+        return process.env.NODE_ENV !== 'production';
+    } catch {
+        return false;
+    }
+}
 
 /**
  * Marks an element as addressable by a tour step or hint.
@@ -29,7 +40,7 @@ export const TourAnchor = forwardRef<HTMLElement, TourAnchorProps>(
         // A dropped attribute is invisible until a tour step mysteriously skips
         // itself, so say so loudly while developing.
         useEffect(() => {
-            if (!isDevelopment) {
+            if (!isDevelopment()) {
                 return;
             }
 

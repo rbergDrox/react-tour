@@ -7,8 +7,5 @@
     "access": "public",
     "baseBranch": "main",
     "updateInternalDependencies": "patch",
-    "ignore": [
-        "react-tour-example-react-router",
-        "react-tour-example-inertia-react"
-    ]
+    "ignore": []
 }

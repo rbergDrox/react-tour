@@ -1,6 +1,6 @@
 {
     "name": "@shapperize/react-tour",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Headless React layer over Driver.js: id-based anchors, tours that span page navigations, step preparers and hints.",
     "license": "MIT",
     "repository": {
@@ -64,12 +64,10 @@
         "./styles.css": "./dist/styles.css",
         "./package.json": "./package.json"
     },
-    "workspaces": [
-        "examples/*"
-    ],
     "scripts": {
         "build": "tsup",
         "typecheck": "tsc --noEmit",
+        "typecheck:examples": "tsc --noEmit -p examples/react-router && tsc --noEmit -p examples/inertia-react",
         "lint": "eslint .",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
@@ -80,7 +78,8 @@
         "build-storybook": "storybook build -o storybook-static",
         "check:package": "publint && attw --pack . --profile node16 --exclude-entrypoints styles.css",
         "changeset": "changeset",
-        "release": "npm run build && changeset publish"
+        "release": "npm run build && changeset publish",
+        "examples:install": "npm ci --prefix examples/react-router && npm ci --prefix examples/inertia-react"
     },
     "peerDependencies": {
         "driver.js": "^1.8.0",

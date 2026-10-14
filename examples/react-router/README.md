@@ -4,10 +4,13 @@ A three-page app with a tour that crosses pages, a sidebar revealed by a step
 preparer, a hint, a spotlight, and progress kept in `localStorage`.
 
 ```sh
-# from the repository root
+# from the repository root: build the package the example links to
 npm install
 npm run build
-npm run dev -w react-tour-example-react-router
+
+# then in this directory
+npm install
+npm run dev
 ```
 
 Worth reading:

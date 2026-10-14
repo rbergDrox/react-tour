@@ -379,6 +379,7 @@ These do not throw, by design, so they are worth knowing:
 npm install
 npm run build        # tsup → dist (ESM, CJS, types)
 npm test             # Vitest; Driver.js is stubbed at src/driver-client.ts
+npm run examples:install   # once; the examples have their own installs
 npm run test:e2e     # Playwright against both examples, real Driver.js
 npm run typecheck
 npm run lint

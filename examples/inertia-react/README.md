@@ -4,10 +4,13 @@ Two Inertia pages, a tour that crosses them, and progress recorded by the
 server through `@shapperize/react-tour/inertia`.
 
 ```sh
-# from the repository root
+# from the repository root: build the package the example links to
 npm install
 npm run build
-npm run dev -w react-tour-example-inertia-react   # http://localhost:4174
+
+# then in this directory
+npm install
+npm run dev   # http://localhost:4174
 ```
 
 `server.js` is a stand-in for a real Inertia backend: about a hundred lines of

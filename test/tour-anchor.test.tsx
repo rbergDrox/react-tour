@@ -167,3 +167,45 @@ describe('TourAnchor', () => {
         expect(warn).not.toHaveBeenCalled();
     });
 });
+
+describe('TourAnchor outside a bundler', () => {
+    it('stays quiet when there is no process to read', () => {
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        vi.stubGlobal('process', undefined);
+
+        try {
+            render(
+                <TourAnchor id="no-process">
+                    <span>Text</span>
+                </TourAnchor>,
+            );
+        } finally {
+            vi.unstubAllGlobals();
+        }
+
+        expect(warn).not.toHaveBeenCalled();
+    });
+
+    it('stays quiet in production', () => {
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        vi.stubEnv('NODE_ENV', 'production');
+
+        function Dropping({ label }: { label: string }) {
+            return <span>{label}</span>;
+        }
+
+        try {
+            render(
+                <TourAnchor id="lost-in-production">
+                    <Dropping label="Lost" />
+                </TourAnchor>,
+            );
+        } finally {
+            vi.unstubAllEnvs();
+        }
+
+        expect(warn).not.toHaveBeenCalled();
+    });
+});
